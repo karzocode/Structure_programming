@@ -1,4 +1,4 @@
-let questions = [
+const oldQuestions = [
   {
     q: "For the following statements to print 011002, we need to replace ? with .........:\nfor (int x=1; x<=2; x++)\n  for (int y=1; y<=3; y++)\n    Console.Write(x? y + \" \");", 
     options: ["+", "*", "/", "%"], 
@@ -169,50 +169,338 @@ let questions = [
   }
 ];
 
-const questionsDiv = document.getElementById("questions");
+const newQuestions = [
+  {
+    q: "There are many types of Programming languages, each one has its own Purpose, strengths and weaknesses.",
+    options: ["True", "False"],
+    correct: 0,
+    explain: "Programming languages are diverse; some are for web, others for systems or data, each with pros and cons."
+  },
+  {
+    q: "Assembly languages are directly understandable by machines.",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "Only machine language (binary 0s and 1s) is directly understood by the CPU; Assembly needs an Assembler."
+  },
+  {
+    q: "Identifying system inputs and outputs is performed in the design phase.",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "Identifying inputs and outputs is part of the Analysis phase, not the Design phase."
+  },
+  {
+    q: "uint data type represents unsigned integral data type.",
+    options: ["True", "False"],
+    correct: 0,
+    explain: "'uint' stands for unsigned integer, which means it only stores positive whole numbers."
+  },
+  {
+    q: "Some of arithmetic operators are binary operators, where other are classified as unary operators.",
+    options: ["True", "False"],
+    correct: 0,
+    explain: "Binary operators (like +) work on two operands, while unary operators (like ++) work on one."
+  },
+  {
+    q: "x=7, n=4, m=2; after executing this line: int z=x++ >> 2+n/m; z will equals 3.",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "The calculation results in 0 (7 >> 4), not 3. Post-increment (x++) happens after the assignment."
+  },
+  {
+    q: "Console.WriteLine(\"value of x=\"+x); produce the same output as Console.Write(\"\\n value of x={0}\",x).",
+    options: ["True", "False"],
+    correct: 0,
+    explain: "Both statements will display the value of x, although the formatting (newline) is handled differently."
+  },
+  {
+    q: "Conditional assignment is a binary operator that equivalent to if...else structure.",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "The conditional operator (?:) is a ternary operator (takes three operands), not binary."
+  },
+  {
+    q: "Constant variable is declared and initialized in two different statements.",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "A 'const' must be declared and initialized in the same statement."
+  },
+  {
+    q: "These statements represent a valid conversion: long x=2; int y; y=x;",
+    options: ["True", "False"],
+    correct: 1,
+    explain: "This requires explicit casting 'y = (int)x' because you are converting from a larger type (long) to a smaller type (int)."
+  }
+  ,
+  {
+    q: "A/An ______ is a software that includes a large library and support several programming languages.",
+    options: ["compiler", "interpreter", "framework", "None"],
+    correct: 2,
+    explain: "A framework (like .Net) provides a collection of libraries and tools to support multiple languages."
+  },
+  {
+    q: "Which of the following is not reserved keyword in C#?",
+    options: ["class", "namespace", "int", "sum"],
+    correct: 3,
+    explain: "'sum' is a common identifier name, while class, namespace, and int are built-in keywords."
+  },
+  {
+    q: "How many bytes are stored by long data type in C#.net?",
+    options: ["8", "4", "2", "1"],
+    correct: 0,
+    explain: "The 'long' (Int64) data type occupies 8 bytes (64 bits) in memory."
+  },
+  {
+    q: "Which of the following is not an integer?",
+    options: ["Short", "Long", "float", "Int16"],
+    correct: 2,
+    explain: "'float' is a floating-point type for decimal numbers, not an integer type."
+  },
+  {
+    q: "Which of the following ways to set a value 3.14 in a variable pi such that it cannot be modified?",
+    options: ["float pi = 3.14;", "const float pi = 3.14;", "const float pi; pi = 3.14;", "pi = 3.14"],
+    correct: 1,
+    explain: "The 'const' keyword requires declaration and initialization in the same line."
+  },
+  {
+    q: "Which of the following is illegal variable name in C#?",
+    options: ["_y2x4", "y2-x4", "2y_x4", "_24xy"],
+    correct: 2,
+    explain: "Variable names cannot start with a digit (number)."
+  },
+  {
+    q: "______ operator yields true only when both operands are true.",
+    options: ["logical OR", "Logical AND", "Shift Right", "Other"],
+    correct: 1,
+    explain: "Logical AND (&&) requires both sides to be True to return True."
+  },
+  {
+    q: "______ operator yields 1 to the result if both bits are 1.",
+    options: ["logical OR", "Logical AND", "Shift Right", "Other (Bitwise AND)"],
+    correct: 3,
+    explain: "The Bitwise AND (&) compares each bit and results in 1 only if both bits are 1."
+  },
+  {
+    q: "The expression n = --x % 2 is equivalent to the sequence of the two expressions:",
+    options: ["x = x - 1 and n = x % 2", "n = x - (x % 2)", "n = x % 2", "other"],
+    correct: 0,
+    explain: "The prefix decrement (--x) reduces x by 1 BEFORE the modulus operation."
+  },
+  {
+    q: "______ operator has lower priority expansion than conditional operator.",
+    options: ["logical OR", "Assignment", "Shift Right", "Other"],
+    correct: 1,
+    explain: "Assignment operators (=, +=, etc.) have almost the lowest priority in C#."
+  },
+  {
+    q: "Statement uses single expression for multiple choices:",
+    options: ["If", "conditional assignment", "switch", "do-while"],
+    correct: 2,
+    explain: "The switch statement evaluates one expression against multiple 'case' values."
+  },
+  {
+    q: "______ is the most important component of .net architecture that manages and executes the .net application.",
+    options: ["CLR", "Compiler", "Interpreter", "Other"],
+    correct: 0,
+    explain: "Common Language Runtime (CLR) is the execution engine that handles running applications."
+  },
+  {
+    q: "A variable name is given by the programmer and is called:",
+    options: ["keyword", "identifier", "namespace", "Other"],
+    correct: 1,
+    explain: "Names given to variables, methods, or classes are called identifiers."
+  },
+  {
+    q: "A ______ must be declared and initialized in the same statement.",
+    options: ["Variable", "constant", "keyword", "Other"],
+    correct: 1,
+    explain: "Constants (const) cannot be assigned a value later; they must be set at declaration."
+  },
+  {
+    q: "______ Operators are binary operators that study the relationship between two expressions.",
+    options: ["binary", "logical", "relational", "Other"],
+    correct: 2,
+    explain: "Relational operators (==, !=, <, >) compare two values to determine their relationship."
+  },
+  {
+    q: "The value of i: int i,j; j=3; i=4+(2*j)/((j-1))",
+    options: ["1", "7", "9", "Other"],
+    correct: 1,
+    explain: "i = 4 + (2*3) / (3-1) = 4 + 6 / 2 = 4 + 3 = 7."
+  },
+  {
+    q: "______ language use short meaningful words to represent its statement.",
+    options: ["High level", "Assembly", "intermediate level", "Both B and C"],
+    correct: 1,
+    explain: "Assembly uses mnemonics (short codes) to represent machine instructions."
+  },
+  {
+    q: "In ______, the process of compiling and executing the code are two different separated processes.",
+    options: ["Assembler", "Compiler", "Interpreter", "Either b or c"],
+    correct: 1,
+    explain: "A compiler translates the whole code first into a file, which is then executed separately."
+  },
+  {
+    q: "______ act as a layer that reside between the .net application/program and the operating system.",
+    options: ["Visual studio.net", ".Net framework", "C#.net", "Other"],
+    correct: 1,
+    explain: "The .Net Framework provides the environment and runtime required to interface with the OS."
+  },
+  {
+    q: "______ is a program for detecting bugs in the code.",
+    options: ["A compiler", "An editor", ".net framework", "Other (Debugger)"],
+    correct: 3,
+    explain: "A Debugger is specifically designed to test and find errors (bugs) in code."
+  },
+  {
+    q: "______ a program for editing source code.",
+    options: ["Editor", "Debugger", "Compiler", ".Net Framework"],
+    correct: 0,
+    explain: "An Editor is where the programmer writes and modifies the source code text."
+  },
+  {
+    q: "______ a program for translating the code into ML (machine language).",
+    options: ["Editor", "Debugger", "Compiler", ".Net Framework"],
+    correct: 2,
+    explain: "The Compiler translates high-level code into low-level machine language."
+  },
+  {
+    q: "______ seeks to understand the problem domain and document the required functionality.",
+    options: ["Requirements specification", "Software Analysis", "Software Design", "Implementation"],
+    correct: 0,
+    explain: "This is the first stage where customer needs and software functions are defined."
+  },
+  {
+    q: "______ seeks to identify the system's input and output.",
+    options: ["Requirements specification", "Software Analysis", "Software Design", "Implementation"],
+    correct: 1,
+    explain: "The Analysis phase focuses on what the system will take as input and produce as output."
+  },
+  {
+    q: "______ seeks to describe the way in which the system should be implemented.",
+    options: ["Requirements specification", "Software Analysis", "Software Design", "Implementation"],
+    correct: 2,
+    explain: "Design phase is where you plan 'how' the system will be built based on the analysis."
+  },
+  {
+    q: "______ seeks to write the code.",
+    options: ["Requirements specification", "Software Analysis", "Software Design", "Implementation"],
+    correct: 3,
+    explain: "Implementation is the phase where developers actually write the source code."
+  },
+  {
+    q: "______ can include many classes.",
+    options: ["Method", "Namespace", "Statement", "Other"],
+    correct: 1,
+    explain: "Namespaces are used to organize code and can contain multiple classes."
+  },
+  {
+    q: "______ is the entry point of the application.",
+    options: ["Main method", "Namespace", "Class", "Other"],
+    correct: 0,
+    explain: "The Main method is where the CPU starts executing the program."
+  },
+  {
+    q: "To print on the screen and move the cursor to the next line we use:",
+    options: ["Console.Write()", "Console.WriteLine()", "Console.Read()", "Console.ReadLine()"],
+    correct: 1,
+    explain: "WriteLine adds a newline character after printing, Write does not."
+  },
+  {
+    q: "To read a string from the user we use:",
+    options: ["Console.Write()", "Console.WriteLine()", "Console.Read()", "Console.ReadLine()"],
+    correct: 3,
+    explain: "ReadLine captures the entire text entered by the user until they press Enter."
+  },
+  {
+    q: "______ is used to convert string to a specific data type.",
+    options: ["Convert class", "Parse method", "Both a and b", "Other"],
+    correct: 2,
+    explain: "Both Convert.ToInt32() and int.Parse() can be used for type conversion."
+  },
+  {
+    q: "Which of the following is used to represent a single character?",
+    options: ["string", "char", "float", "decimal"],
+    correct: 1,
+    explain: "'char' is for a single 16-bit Unicode character, 'string' is for a sequence of characters."
+  },
+  {
+    q: "The operator %= is called:",
+    options: ["Percentage", "Modulus assignment", "Division", "Other"],
+    correct: 1,
+    explain: "It calculates the remainder of a division and assigns it to the variable (e.g., x %= 2)."
+  },
+  {
+    q: "In C#, the result of 10 / 3 (where both are integers) is:",
+    options: ["3.333", "3", "4", "Error"],
+    correct: 1,
+    explain: "Integer division in C# drops the decimal part (truncation)."
+  },
+  {
+    q: "Which of the following is a logical operator?",
+    options: ["&&", "+", "==", "<"],
+    correct: 0,
+    explain: "&& is Logical AND. + is arithmetic, == and < are relational operators."
+  },
+  {
+    q: "The default case in a switch statement is:",
+    options: ["Mandatory", "Optional", "Always executed", "None of the above"],
+    correct: 1,
+    explain: "The 'default' label is not required; it's only used if no cases match the expression."
+  },
+  {
+    q: "A program for editing source code is called:",
+    options: ["Editor", "Debugger", "Compiler", ".Net Framework"],
+    correct: 0,
+    explain: "An Editor (like VS Code or Notepad) is used to write and edit the code."
+  },
+  {
+    q: "A program for translating the code into Machine Language (ML) is:",
+    options: ["Editor", "Debugger", "Compiler", ".Net Framework"],
+    correct: 2,
+    explain: "The Compiler translates high-level code into something the machine can execute."
+  }
 
-// Build all questions as cards
-questions.forEach((q,i)=>{
+];
+
+function createCard(q, index) {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.className = "card";
 
     card.innerHTML = `
-        <div class="card-number">Question ${i+1}</div>
+        <div class="card-number">Question ${index + 1}</div>
         <div class="question-text">${q.q}</div>
-        <div class="options">
-            ${q.options.map((opt,idx)=>`<div class="option" data-index="${idx}">${opt}</div>`).join("")}
-        </div>
+        ${q.options.map((o,i)=>`<div class="option" data-i="${i}">${o}</div>`).join("")}
         <div class="explain-btn">Explain</div>
-        <div class="explanation">${q.explanation}</div>
+        <div class="explanation">${q.explain}</div>
     `;
 
-    questionsDiv.appendChild(card);
-});
-
-// Add click events for instant correction
-document.querySelectorAll(".option").forEach((el)=>{
-    el.addEventListener("click",()=>{
-        const parentCard = el.closest(".card");
-        const cardIndex = Array.from(questionsDiv.children).indexOf(parentCard);
-        const selectedIndex = parseInt(el.dataset.index);
-
-        // Clear previous selections
-        parentCard.querySelectorAll(".option").forEach(o=>o.classList.remove("correct","wrong"));
-
-        if(selectedIndex === questions[cardIndex].correct){
-            el.classList.add("correct");
-        } else {
-            el.classList.add("wrong");
-            parentCard.querySelectorAll(".option")[questions[cardIndex].correct].classList.add("correct");
-        }
+    const options = card.querySelectorAll(".option");
+    options.forEach(opt => {
+        opt.addEventListener("click", () => {
+            options.forEach(o => o.classList.remove("correct","wrong"));
+            const i = +opt.dataset.i;
+            if (i === q.correct) {
+                opt.classList.add("correct");
+            } else {
+                opt.classList.add("wrong");
+                options[q.correct].classList.add("correct");
+            }
+        });
     });
-});
 
-// Add click events for Explain button
-document.querySelectorAll(".explain-btn").forEach((btn)=>{
-    btn.addEventListener("click", ()=>{
-        const card = btn.closest(".card");
-        const explanation = card.querySelector(".explanation");
-        explanation.style.display = explanation.style.display === "block" ? "none" : "block";
-    });
-});
+    card.querySelector(".explain-btn").onclick = () => {
+        const exp = card.querySelector(".explanation");
+        exp.style.display = exp.style.display === "block" ? "none" : "block";
+    };
+
+    return card;
+}
+
+const oldContainer = document.getElementById("old-questions");
+const newContainer = document.getElementById("new-questions");
+
+oldContainer.classList.add("questions-grid");
+newContainer.classList.add("questions-grid");
+
+oldQuestions.forEach((q,i)=> oldContainer.appendChild(createCard(q,i)));
+newQuestions.forEach((q,i)=> newContainer.appendChild(createCard(q,i)));
