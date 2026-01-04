@@ -471,7 +471,8 @@ function createCard(q, index) {
         <div class="question-text">${q.q}</div>
         ${q.options.map((o,i)=>`<div class="option" data-i="${i}">${o}</div>`).join("")}
         <div class="explain-btn">Explain</div>
-        <div class="explanation">${q.explain}</div>
+        <div class="explanation">${q.explain || q.explanation}</div>
+
     `;
 
     const options = card.querySelectorAll(".option");
