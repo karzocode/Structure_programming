@@ -3,7 +3,7 @@
 
 /* ==================== GLOBAL ==================== */
 * {
-    box-sizing: border-box; /* بيضمن إن العرض يتحسب صح مع الـ Padding */
+    box-sizing: border-box; 
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     width: 100%;
     height: 120px;
     display: flex;
-    flex-direction: column; /* متوافق مع الموبايل */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     color: #ffffff;
@@ -80,7 +80,7 @@ body {
 #questions {
     display: grid;
     gap: 20px;
-    /* الوضع الافتراضي للشاشات الكبيرة */
+  
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -149,12 +149,12 @@ body {
     font-size: 15px;
 }
 
-/* ==================== RESPONSIVE (المهم جداً) ==================== */
+/* ==================== RESPONSIVE ==================== */
 
-/* للموبايل: إجبار عمود واحد فقط مهما كان حجم الشاشة */
+
 @media screen and (max-width: 900px) { 
     #questions { 
-        grid-template-columns: 1fr !important; /* عمود واحد فقط */
+        grid-template-columns: 1fr !important; 
     } 
     .top-bar {
         height: 100px;
@@ -163,14 +163,15 @@ body {
         font-size: 18px;
     }
     .top-bar .whatsapp-btn {
-        position: static; /* يخلي الزرار تحت العنوان في الموبايل */
+        position: static; 
         margin-top: 10px;
     }
 }
 
-/* للشاشات الكبيرة جداً (Monitor) */
+
 @media screen and (min-width: 1500px) { 
     #questions { 
-        grid-template-columns: repeat(4, 1fr); /* 4 كاردات في السطر */
+        grid-template-columns: repeat(4, 1fr); 
     } 
+
 }
