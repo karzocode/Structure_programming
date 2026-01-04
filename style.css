@@ -1,0 +1,176 @@
+/* ==================== IMPORT FONTS ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400&family=Jersey+25&display=swap');
+
+/* ==================== GLOBAL ==================== */
+* {
+    box-sizing: border-box; /* بيضمن إن العرض يتحسب صح مع الـ Padding */
+}
+
+body {
+    margin: 0;
+    font-family: "Exo 2", sans-serif;
+    font-weight: 400;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ==================== CONTAINER ==================== */
+.quiz-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px 20px 15px;
+}
+
+/* ==================== HEADER / TOP BAR ==================== */
+.top-bar {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column; /* متوافق مع الموبايل */
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0,0,0,0.6);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.top-bar::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 200%; height: 100%;
+    background: url('1.jpeg') repeat-x;
+    background-size: cover;
+    filter: blur(6px) brightness(0.5);
+    z-index: -1;
+    animation: moveBG 20s linear infinite;
+}
+
+@keyframes moveBG {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.top-bar h4 {
+    margin: 0;
+    font-size: 24px;
+    z-index: 5;
+}
+
+.top-bar .whatsapp-btn {
+    position: absolute;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    z-index: 10;
+}
+
+/* ==================== GRID LAYOUT ==================== */
+#questions {
+    display: grid;
+    gap: 20px;
+    /* الوضع الافتراضي للشاشات الكبيرة */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ==================== CARD ==================== */
+.card {
+    background: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card:hover { 
+    border-color: #58a6ff; 
+    transform: translateY(-5px);
+}
+
+.card-number {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #79c0ff;
+}
+
+.question-text { 
+    font-size: 18px; 
+    margin-bottom: 15px; 
+}
+
+/* ==================== OPTIONS ==================== */
+.option {
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: #21262d;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option:hover { background: #30363d; }
+.option.correct { background-color: #238636; color: #ffffff; }
+.option.wrong { background-color: #f85149; color: #ffffff; }
+
+/* ==================== BUTTONS & EXPLANATION ==================== */
+.explain-btn {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #58a6ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background: #0d1117;
+    border-left: 4px solid #58a6ff;
+    display: none;
+    font-size: 15px;
+}
+
+/* ==================== RESPONSIVE (المهم جداً) ==================== */
+
+/* للموبايل: إجبار عمود واحد فقط مهما كان حجم الشاشة */
+@media screen and (max-width: 900px) { 
+    #questions { 
+        grid-template-columns: 1fr !important; /* عمود واحد فقط */
+    } 
+    .top-bar {
+        height: 100px;
+    }
+    .top-bar h4 {
+        font-size: 18px;
+    }
+    .top-bar .whatsapp-btn {
+        position: static; /* يخلي الزرار تحت العنوان في الموبايل */
+        margin-top: 10px;
+    }
+}
+
+/* للشاشات الكبيرة جداً (Monitor) */
+@media screen and (min-width: 1500px) { 
+    #questions { 
+        grid-template-columns: repeat(4, 1fr); /* 4 كاردات في السطر */
+    } 
+}
