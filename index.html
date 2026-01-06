@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Quiz Catalog</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Jersey+25&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <div class="hero-bar">
+        <div class="hero-text">
+            <h1>Hi, I’m <span>ENG.KARIEM TAMER</span></h1>
+            <p>Computer Science Student at<br>New Mansoura University</p>
+        </div>
+
+        <div class="hero-actions">
+            <a href="https://wa.me/201208568067"
+               target="_blank"
+               class="hero-btn contact-btn">
+                Contact me
+            </a>
+
+            <a href="https://struc-programming-c-sharp-nmu-25-26-three.vercel.app/"
+               class="hero-btn outline">
+                Essay questions made by Ahmed Elbaz
+            </a>
+        </div>
+    </div>
+
+    <!-- NAV BUTTONS -->
+    <div class="nav-sections">
+        <button class="hero-btn outline" data-target="old-questions">Final Exam</button>
+        <button class="hero-btn outline" data-target="new-questions">Over Review</button>
+        <button class="hero-btn outline" data-target="section-3">Chapter_1</button>
+        <button class="hero-btn outline" data-target="section-4">Chapter_2</button>
+        <button class="hero-btn outline" data-target="section-5">Chapter_3</button>
+        <button class="hero-btn outline" data-target="section-6">Chapter_4</button>
+        <button class="hero-btn outline" data-target="section-7">Chapter_5</button>
+        <button class="hero-btn outline" data-target="section-8">Chapter_6</button>
+        <button class="hero-btn outline" data-target="section-9">Chapter_7</button>
+        <button class="hero-btn outline" data-target="section-10">Chapter_8 practical</button>
+        <button class="hero-btn outline" data-target="section-11">Chapter_8 theoretical</button>
+    </div>
+
+    <!-- SECTIONS -->
+    <div class="quiz-container">
+        <div class="section-bar">Last year’s final exam questions</div>
+        <div id="old-questions" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">
+            Review questions from previous years' sources. They may be useful for us...
+        </div>
+        <div id="new-questions" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_1 - Introduction</div>
+        <div id="section-3" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_2 - Basic Syntax</div>
+        <div id="section-4" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_3 - Data Types</div>
+        <div id="section-5" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_4 - Operators</div>
+        <div id="section-6" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_5 - Branching</div>
+        <div id="section-7" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_6 - Looping</div>
+        <div id="section-8" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_7 - Arrays</div>
+        <div id="section-9" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_8 - Method (practical)</div>
+        <div id="section-10" class="questions-grid"></div>
+    </div>
+
+    <div class="quiz-container">
+        <div class="section-bar">Chapter_8 - Method (theoretical)</div>
+        <div id="section-11" class="questions-grid"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-bar">
+        If you reached this point, then you truly deserve success.
+    </div>
+
+    <div class="footer-bar">
+        The questions are over!!
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
