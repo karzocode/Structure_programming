@@ -6,33 +6,36 @@
     padding: 0;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: "Exo 2", sans-serif;
     color: #c9d1d9;
-    margin: 0;
-    padding: 0;
     height: 100%;
-    overflow-x: hidden;
     position: relative;
 }
 
+/* ===== MOVING BACKGROUND (FIXED) ===== */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
+    inset: 0;
+    width: 300%;
     height: 100%;
-    background: url('bback2.jpg') repeat-x;
-    background-size: cover;
+    background-image: url('bback2.jpg');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
     filter: blur(8px) brightness(0.5);
     animation: moveBg 60s linear infinite;
     z-index: -1;
 }
 
 @keyframes moveBg {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.333%); }
 }
 
 /* ===== HERO BAR ===== */
@@ -132,13 +135,6 @@ body::before {
     transform: translateY(-5px);
 }
 
-.card-number {
-    font-size: 16px;
-    font-weight: 600;
-    color: #38bdf8;
-    margin-bottom: 10px;
-}
-
 /* ===== QUESTION TEXT ===== */
 .question-text {
     font-family: "Space Mono", monospace;
@@ -153,42 +149,6 @@ body::before {
     margin: 8px 0;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s;
-}
-
-.option:hover {
-    background: #30363d;
-}
-
-.option.correct {
-    background: #238636;
-    color: white;
-}
-
-.option.wrong {
-    background: #f85149;
-    color: white;
-}
-
-/* ===== EXPLANATION ===== */
-.explain-btn {
-    margin-top: 15px;
-    padding: 10px;
-    background: #38bdf8;
-    color: #0d1117;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.explanation {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: #0d1117;
-    border-left: 4px solid #38bdf8;
-    font-family: "Exo 2", sans-serif;
 }
 
 /* ===== NAVIGATION SECTIONS ===== */
@@ -202,69 +162,6 @@ body::before {
     justify-content: center;
 }
 
-/* ===== THEME SIDEBAR ===== */
-.theme-sidebar {
-    position: fixed;
-    top: 50%;
-    right: 14px;
-    transform: translateY(-50%);
-    z-index: 50;
-    font-family: "Exo 2", sans-serif;
-}
-
-.theme-toggle {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    background: rgba(20, 30, 45, 0.8);
-    color: #38bdf8;
-    padding: 14px 10px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 1px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.theme-toggle:hover {
-    background: rgba(56, 189, 248, 0.15);
-}
-
-.theme-panel {
-    margin-top: 10px;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-.theme-sidebar.open .theme-panel {
-    display: flex;
-}
-
-.theme-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid #38bdf8;
-    background: transparent;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.theme-btn:hover {
-    transform: scale(1.15);
-}
-
-.theme-btn.toggle-bg {
-    color: #38bdf8;
-    font-size: 14px;
-    background: rgba(20, 30, 45, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
     .hero-bar {
@@ -274,63 +171,47 @@ body::before {
     }
 
     .questions-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .quiz-container {
-        padding: 0 15px 30px;
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 600px) {
-    .theme-sidebar {
-        right: 6px;
-    }
-
-    .theme-btn {
-        width: 28px;
-        height: 28px;
-    }
-}
-
-/* ===== MOBILE HERO BUTTONS (Contact me above) ===== */
 @media (max-width: 430px) {
     .hero-bar {
         margin: 20px 12px;
         padding: 25px 20px;
-        border-radius: 28px;
     }
 
-    .hero-text h1 {
-        font-size: 24px;
-        line-height: 1.3;
-    }
+    .hero-text h1 { font-size: 24px; }
+    .hero-text p { font-size: 16px; }
 
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    /* make hero buttons vertical on mobile and contact me on top */
     .hero-actions {
         flex-direction: column;
-        gap: 12px;
         align-items: center;
+        gap: 12px;
     }
 
-    .hero-actions a:first-child {
-        order: -1; /* Contact me goes on top */
-        width: 70%; /* optional: make it bigger */
-        text-align: center;
-    }
-
-    .hero-actions a:last-child {
+    .hero-actions a {
         width: 70%;
         text-align: center;
+        font-size: 14px;
+        padding: 10px 18px;
     }
 
-    .hero-btn {
-        padding: 10px 18px;
-        font-size: 14px;
+    /* NAV FIX */
+    .nav-sections {
+        max-width: 100%;
+        padding: 0 12px;
+    }
+
+    .nav-sections .hero-btn {
+        width: 46%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .nav-sections .hero-btn[data-target="section-10"],
+    .nav-sections .hero-btn[data-target="section-11"] {
+        width: 95%;
     }
 
     .section-bar,
@@ -338,48 +219,5 @@ body::before {
         margin: 25px 12px;
         padding: 14px 18px;
         font-size: 18px;
-        border-radius: 999px;
     }
-
-    .card {
-        padding: 15px;
-    }
-
-    .question-text {
-        font-size: 15px;
-    }
-
-    .option {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .explain-btn {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}@media (max-width: 430px) {
-    .nav-sections {
-        max-width: 100%;
-        padding: 0 12px;
-        box-sizing: border-box;
-    }
-}@media (max-width: 430px) {
-    .nav-sections .hero-btn {
-        width: 46%;
-        padding-left: 0;
-        padding-right: 0;
-        text-align: center;
-    }
-
-    /* الأزرار الطويلة */
-    .nav-sections .hero-btn[data-target="section-10"],
-    .nav-sections .hero-btn[data-target="section-11"] {
-        width: 95%;
-    }
-
 }
