@@ -893,7 +893,7 @@ const section4Questions = [
   },
   {
     "q": "What will be the output of: Console.Write(1); Console.WriteLine(2); Console.WriteLine(3);",
-    "options": ["123", "1 2 3", "12 3", "1\n2\n3"],
+    "options": ["123", "1 2 3", "12 3", "12\\n3"],
     "correct": 3,
     "explanation": "Console.Write(1) prints '1' (no newline). Console.WriteLine(2) prints '2' then a newline. Console.WriteLine(3) prints '3' on a new line."
   },
@@ -2979,5 +2979,6 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
