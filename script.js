@@ -1641,12 +1641,7 @@ const section7Questions = [
     "correct": 1,
     "explanation": "A switch statement is often cleaner and more efficient than a long chain of else-if statements when comparing the same variable against multiple constant values."
   },
-  {
-    "q": "x<y means:",
-    "options": ["x greater than y", "x smaller than y", "x equals y", "invalid"],
-    "correct": 1,
-    "explanation": "The less-than operator (<) checks if the left operand is less than the right operand."
-  },
+  
   {
     "q": "x>= y means:",
     "options": ["x greater or equal y", "x always equals y", "y always greater", "always false"],
@@ -2979,6 +2974,7 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
 
