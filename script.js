@@ -1213,7 +1213,7 @@ const section5Questions = [
   },
   {
     "q": "Which function reads user input as string in C#?",
-    "options": ["Console.ReadLine()", "Console.ReadLine()", "Console.ReadKey()", "Read.Input()"],
+    "options": ["Console.ReadLine{}", "Console.ReadLine()", "Console.ReadKey()", "Read.Input()"],
     "correct": 1,
     "explanation": "Console.ReadLine() reads a line of text from the input stream and returns it as a string. (Note: The first two options appear identical in the source; the correct method name is Console.ReadLine())."
   },
@@ -2979,4 +2979,5 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
