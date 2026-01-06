@@ -14,28 +14,21 @@ html, body {
 body {
     font-family: "Exo 2", sans-serif;
     color: #c9d1d9;
-    height: 100%;
+    min-height: 100vh;
     position: relative;
 }
 
-/* ===== MOVING BACKGROUND (FIXED) ===== */
+/* ===== FIXED BACKGROUND ===== */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    width: 300%;
+    width: 100%;
     height: 100%;
-    background-image: url('bback2.jpg');
-    background-repeat: repeat-x;
-    background-size: auto 100%;
+    background: url('bback2.jpg') no-repeat center center;
+    background-size: cover;
     filter: blur(8px) brightness(0.5);
-    animation: moveBg 60s linear infinite;
     z-index: -1;
-}
-
-@keyframes moveBg {
-    from { transform: translateX(0); }
-    to { transform: translateX(-33.333%); }
 }
 
 /* ===== HERO BAR ===== */
@@ -83,6 +76,7 @@ body::before {
     text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
+    text-align: center;
 }
 
 .hero-btn:hover {
@@ -135,7 +129,13 @@ body::before {
     transform: translateY(-5px);
 }
 
-/* ===== QUESTION TEXT ===== */
+.card-number {
+    font-size: 16px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
 .question-text {
     font-family: "Space Mono", monospace;
     font-size: 17px;
@@ -149,9 +149,44 @@ body::before {
     margin: 8px 0;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-/* ===== NAVIGATION SECTIONS ===== */
+.option:hover {
+    background: #30363d;
+}
+
+.option.correct {
+    background: #238636;
+    color: white;
+}
+
+.option.wrong {
+    background: #f85149;
+    color: white;
+}
+
+/* ===== EXPLANATION ===== */
+.explain-btn {
+    margin-top: 15px;
+    padding: 10px;
+    background: #38bdf8;
+    color: #0d1117;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.explanation {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #0d1117;
+    border-left: 4px solid #38bdf8;
+}
+
+/* ===== NAV SECTIONS ===== */
 .nav-sections {
     max-width: 1400px;
     margin: 0 auto 30px;
@@ -179,45 +214,54 @@ body::before {
     .hero-bar {
         margin: 20px 12px;
         padding: 25px 20px;
+        border-radius: 28px;
     }
 
-    .hero-text h1 { font-size: 24px; }
-    .hero-text p { font-size: 16px; }
+    .hero-text h1 {
+        font-size: 24px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
 
     .hero-actions {
         flex-direction: column;
-        align-items: center;
         gap: 12px;
+        align-items: center;
     }
 
-    .hero-actions a {
+    .hero-actions a:first-child {
+        order: -1;
         width: 70%;
-        text-align: center;
-        font-size: 14px;
-        padding: 10px 18px;
     }
 
-    /* NAV FIX */
+    .hero-actions a:last-child {
+        width: 70%;
+    }
+
+    .hero-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .section-bar,
+    .footer-bar {
+        font-size: 18px;
+        margin: 25px 12px;
+        padding: 14px 18px;
+    }
+
     .nav-sections {
-        max-width: 100%;
         padding: 0 12px;
     }
 
     .nav-sections .hero-btn {
         width: 46%;
-        padding-left: 0;
-        padding-right: 0;
     }
 
     .nav-sections .hero-btn[data-target="section-10"],
     .nav-sections .hero-btn[data-target="section-11"] {
         width: 95%;
-    }
-
-    .section-bar,
-    .footer-bar {
-        margin: 25px 12px;
-        padding: 14px 18px;
-        font-size: 18px;
     }
 }
