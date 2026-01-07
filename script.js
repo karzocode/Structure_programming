@@ -194,7 +194,7 @@ const newQuestions = [
   options: ["True", "False"],
   correct: 0,
   explanation: "n++ returns 4 then increments n. 4 / 2 = 2, and 2 << 2 equals 8."
-}
+},
 
   { q: "The body of while loop will be executed at least once even if the condition is false.", options: ["True","False"], correct: 1, explain: "That applies to do-while." },
   { q: "We can make nested loops with loops of the same kind or different kinds.", options: ["True","False"], correct: 0, explain: "Both are possible." },
@@ -2980,6 +2980,7 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
 
