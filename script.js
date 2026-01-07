@@ -189,7 +189,13 @@ const newQuestions = [
   { q: "C# is an intermediate language which needs a compiler to translate its code to machine code.", options: ["True","False"], correct: 0, explain: "Uses IL and CLR." },
   { q: "The term .net framework refers to the collection of physical units that comprise a computer system.", options: ["True","False"], correct: 1, explain: "That is hardware." },
   { q: "A software design seeks to draw an algorithm and flowchart that describes how to solve the problem.", options: ["True","False"], correct: 0, explain: "Correct definition." },
-  { q: "For n=4, m=2, y=2 the expression n++/m<<y equals 7.", options: ["True","False"], correct: 0, explain: "Expression evaluates to 7." },
+ {
+  q: "For n = 4, m = 2, y = 2, the expression n++ / m << y equals 8.",
+  options: ["True", "False"],
+  correct: 0,
+  explanation: "n++ returns 4 then increments n. 4 / 2 = 2, and 2 << 2 equals 8."
+}
+
   { q: "The body of while loop will be executed at least once even if the condition is false.", options: ["True","False"], correct: 1, explain: "That applies to do-while." },
   { q: "We can make nested loops with loops of the same kind or different kinds.", options: ["True","False"], correct: 0, explain: "Both are possible." },
   { q: "Method overloading is creating multiple methods with the same name but different signatures.", options: ["True","False"], correct: 0, explain: "Correct definition." },
@@ -2974,6 +2980,7 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
 
