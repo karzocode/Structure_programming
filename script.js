@@ -54,10 +54,10 @@ const oldQuestions = [
     explanation: "Multiplication has higher precedence than addition. So, 2*3=6, then 1+6=7."
   },
   {
-    q: "For the following statements to print 5 1, we need to replace ? with:\nfor (int i=5; i>=1; i ? 4)\n  Console.Write(i + \" \");", 
+   q: "For the following statements to print 5 1, we need to replace ? with:\nfor (int i=5; i>=1; i ? 3)\n  Console.Write(i + \" \");", 
     options: ["+=", "-=", "*=", "/="], 
-    correct: 1,
-    explanation: "To decrease the value of i from 5 to 1, we need the subtraction assignment operator (-=)."
+    correct: 3,
+    explanation: ""
   },
   {
     q: "What is the output of following code?\nint x=40, y=10;\nif (x>=30) Console.Write (\"Ok\");\nelse Console.Write (\"Sorry\");\nConsole.Write (\"Bye\");", 
@@ -2980,6 +2980,7 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
 
