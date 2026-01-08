@@ -892,8 +892,8 @@ const section4Questions = [
     "explanation": "decimal uses 16 bytes, double uses 8, float uses 4, and long uses 8."
   },
   {
-    "q": "Which of the following code lines correctly initializes multiple variables?",
-    "options": ["int x=5, y, z=10;", "int x=5 y=10;", "int (x=5, y=10);", "int x=5,y=10;"],
+   "q": "Which of the following code lines correctly initializes multiple variables?",
+    "options": ["int x=5, y=4 , z=10;", "int x=5 y=10;", "int (x=5, y=10);", "int x=5,(y=10.2);"],
     "correct": 0,
     "explanation": "Variables can be declared and optionally initialized in the same statement, separated by commas."
   },
@@ -2980,6 +2980,7 @@ document.querySelectorAll(".nav-sections button").forEach(btn => {
         }
     });
 });
+
 
 
 
